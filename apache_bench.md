@@ -1,5 +1,14 @@
 # Apache Bench e execução de um teste de carga no Home de uma  React Js.
 
+# Requisitos:
+
+  1. [Ter concluido os passos de Configuração do Nginx ](https://github.com/AquilaDavid/NginxAtividade2/blob/main/redirecionamento_react.md)
+  2. Ter WSL instalado
+  3. Ter 8 RAM
+  4. Ter o NGINX instalado
+  5. Ter o CURL instalado
+  6. Ter o DOCKER instalado
+
 ## 1° passo:
 
 User esse comando para instalar o Apache Bench: `apt update && apt install -y apache2-utils`
@@ -24,15 +33,31 @@ No primeiro teste, ao utilizar:
 
 `ab -n 100000 -c 100 http://localhost:8080/`
 
-foi gerado o erro Connection refused, pois essa porta não existe dentro do container. A porta 8080 é utilizada apenas no host (Windows), devido ao mapeamento de portas do Docker.
+Esse comando usa o Apache Bench (ab) para fazer um teste de carga no servidor.
+
+### Explicação dos parametros.
+
+- `-n 100000` → total de **100.000 requisições**
+- `-c 100` → **100 requisições simultâneas** (100 usuários ao mesmo tempo)
+- `http://localhost/` → servidor sendo testado (seu próprio PC)
+
+Em resumo:
+
+> Simula 100 usuários acessando ao mesmo tempo até completar 100 mil acessos, para medir o desempenho do servidor.
+
+## Problema que eu enfrentei ao fazer os testes
+
+Foi gerado o erro **Connection refused**, pois a porta utilizada não existia dentro do container. A porta **8080** é exposta apenas no host (Windows), devido ao mapeamento de portas do Docker.
 
 ![6](/6.png)
 
-Já no comando corrigido:
+## Resolução
+
+O problema foi corrigido ao utilizar o comando:
 
 `ab -n 100000 -c 100 http://localhost/`
 
-o teste é realizado diretamente na porta 80, onde o Nginx está rodando dentro do container, permitindo que as requisições sejam processadas corretamente.
+Nesse caso, o teste é realizado diretamente na porta **80**, onde o Nginx está rodando dentro do container. Assim, as requisições conseguem ser processadas corretamente.
 
 Resultado do teste:
 
