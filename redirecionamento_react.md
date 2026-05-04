@@ -221,4 +221,4 @@ server {
 Essa configuração funciona porque o Nginx, por padrão, tenta encontrar arquivos físicos com base na URL acessada, mas em uma aplicação React (SPA) as rotas são controladas pelo próprio frontend e não existem como arquivos no servidor. Ao usar try_files $uri /index.html;, o Nginx primeiro tenta servir o arquivo solicitado e, caso não encontre, redireciona automaticamente para o index.html, que é o ponto de entrada da aplicação React. A partir daí, o próprio React assume o controle e renderiza a página correta conforme a rota acessada, evitando erros como 404 ou 500 ao navegar entre páginas.
 
 
-![video ilustrando funcionando](/Instituições%20de%20Ensino%20-%20Censo%20Escolar%20-%20Google%20Chrome%202026-05-04%2001-14-04.mp4)
+![video ilustrando funcionando](/Instituições-de-Ensino-Censo-Escolar-Google-Chrome-2026-05-04-01-14-04.gif)
