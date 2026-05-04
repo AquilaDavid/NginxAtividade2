@@ -192,3 +192,30 @@ Com isso deve aparecer sua aplicação, como desse jeito:
 
 
 ![4](/4.png)
+
+
+Mas ainda temos um problema de redirecionamento, pois caso sairmos da home, a pagina falharia 
+
+# Corrigir Redirecionamento do Nginx
+
+Para isso vamos acessar esse caminho: `cd /etc/nginx/sites-available`
+
+faça esse comando `nano minhaappweb20252.conf`
+
+Dentro do arquivo copie e cole esse:
+
+```
+server {
+    listen 80;
+    server_name _;
+
+    root /home/ubuntu/minhaappweb20252/dist;
+    index index.html;
+
+    location / {
+        try_files $uri /index.html;
+    }
+}
+```
+
+Essa configuração funciona porque o Nginx, por padrão, tenta encontrar arquivos físicos com base na URL acessada, mas em uma aplicação React (SPA) as rotas são controladas pelo próprio frontend e não existem como arquivos no servidor. Ao usar try_files $uri /index.html;, o Nginx primeiro tenta servir o arquivo solicitado e, caso não encontre, redireciona automaticamente para o index.html, que é o ponto de entrada da aplicação React. A partir daí, o próprio React assume o controle e renderiza a página correta conforme a rota acessada, evitando erros como 404 ou 500 ao navegar entre páginas.
