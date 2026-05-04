@@ -20,7 +20,7 @@ Com isso vamos ver se tem alguma maquina rodando, caso tenha alguma, pare ela e 
 
 Idealmente esteja assim:
 
-![5](/5.png)
+![1](/1.png)
 
 
 Caso você ainda não tenha o docker com um conteiner e maquina configurada: [Acesse aqui para configurar](https://github.com/AquilaDavid/GerenciaConfiguracao)
@@ -42,7 +42,7 @@ Para verificamos se o nginx foi corretamente instalado, usamos esse comando:
 
 Deve aparecer algo assim:
 
-![1](/1.png)
+![5](/5.png)
 
 Com a isntalação pronta, vamos usar o **SystemCtl** para dar um  start no nosso nginx e configurar para iniciar junto com o SO.
 
