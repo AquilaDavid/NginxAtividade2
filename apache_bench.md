@@ -10,7 +10,7 @@ Verifique se o Nginx está funcionando corretamente. Para isso, você pode testa
 
 `curl http://localhost`
 
-Se retornar o HTML da aplicação, значит o servidor está ativo e pronto para testes.
+Se retornar o HTML da aplicação, o servidor está ativo e pronto para testes.
 
 3° passo:
 
